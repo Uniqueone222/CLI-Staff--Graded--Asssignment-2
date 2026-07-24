@@ -63,3 +63,43 @@ gcc process_manager.c -o process_manager
 **Explanation:**
 
 This command compiles the C source code into an executable named `process_manager`.
+
+---
+
+### Command 5
+
+```bash
+./process_manager
+```
+
+**Explanation:**
+
+This command executes the compiled program and demonstrates process creation, monitoring, signal handling, and prevention of zombie processes.
+
+---
+
+### Command 6
+
+```bash
+pwd
+ls -l
+file process_manager
+```
+
+**Explanation:**
+
+- `pwd` displays the current working directory.
+- `ls -l` lists the files with detailed information.
+- `file process_manager` verifies that the generated file is a Linux executable.
+
+---
+
+## Conceptual Explanation
+
+The `fork()` system call creates child processes from the parent process. Each child executes independently and receives its own Process ID (PID).
+
+The parent process uses `wait()` (or `waitpid()`) to wait for child processes to finish execution. This releases the resources used by terminated child processes and prevents zombie processes.
+
+If a child process becomes unresponsive, the parent process sends the `SIGKILL` signal using the `kill()` system call. This forcefully terminates the child process and ensures that system resources are not wasted.
+
+Together, `fork()`, `wait()`, and signal handling provide an efficient mechanism for creating, monitoring, and managing processes in Linux.w
